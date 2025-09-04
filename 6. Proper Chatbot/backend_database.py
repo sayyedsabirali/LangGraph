@@ -1,17 +1,27 @@
 from langgraph.graph import StateGraph, START, END
 from typing import TypedDict, Annotated
 from langchain_core.messages import BaseMessage, HumanMessage
-from langchain_openai import ChatOpenAI
 # from langgraph.checkpoint.memory import InMemorySaver
 from langgraph.checkpoint.sqlite import SqliteSaver
 from langgraph.graph.message import add_messages
 from dotenv import load_dotenv
 import sqlite3
+from langchain_groq import ChatGroq
+import os
 
 load_dotenv()
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+if not GROQ_API_KEY:
+    raise RuntimeError(
+        "GROQ_API_KEY not set. Please create a .env file with GROQ_API_KEY=sk_... "
+        "or set the environment variable before running."
+    )
 
-llm = ChatOpenAI()
-
+llm = ChatGroq(
+    groq_api_key=GROQ_API_KEY,
+    model="llama-3.1-8b-instant",
+    temperature=0.2,
+)
 class ChatState(TypedDict):
     messages: Annotated[list[BaseMessage], add_messages]
 

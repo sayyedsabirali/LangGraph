@@ -92,13 +92,12 @@ if user_input:
 
     # first add the message to message_history
     with st.chat_message('assistant'):
-
-        ai_message = st.write_stream(
-            message_chunk.content for message_chunk, metadata in chatbot.stream(
-                {'messages': [HumanMessage(content=user_input)]},
-                config= CONFIG,
-                stream_mode= 'messages'
-            )
+        response_stream = chatbot.stream(
+        {'messages': [HumanMessage(content=user_input)]},
+        config=CONFIG,
+        stream_mode='messages'
         )
+        ai_message = st.write_stream(chunk.content for chunk, metadata in response_stream)
 
+    # ab sirf clean text ko history me save karo
     st.session_state['message_history'].append({'role': 'assistant', 'content': ai_message})

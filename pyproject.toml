@@ -1,16 +1,15 @@
 [project]
-name = "9-langgraph"
+name = "langgraph-venv"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
     "dotenv>=0.9.9",
-    "ipykernel>=6.29.5",
-    "ipython>=9.4.0",
-    "langchain>=0.3.26",
-    "langchain-openai>=0.3.27",
-    "langgraph>=0.5.2",
+    "langchain-core>=0.3.75",
+    "langchain-groq>=0.3.7",
+    "langchain-openai>=0.3.32",
+    "langgraph>=0.6.6",
     "langgraph-checkpoint-sqlite>=2.0.11",
     "streamlit>=1.49.1",
 ]

@@ -5,10 +5,14 @@ from langchain_openai import ChatOpenAI
 from langgraph.checkpoint.memory import InMemorySaver
 from langgraph.graph.message import add_messages
 from dotenv import load_dotenv
+from langchain_groq import ChatGroq
 
 load_dotenv()
 
-llm = ChatOpenAI()
+llm = ChatGroq(
+    groq_api_key="YOUR_GROQ_API_KEY",
+    model="llama3-8b-8192"
+)
 
 class ChatState(TypedDict):
     messages: Annotated[list[BaseMessage], add_messages]
