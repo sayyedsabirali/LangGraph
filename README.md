@@ -78,7 +78,7 @@ This section will be updated as new concepts and examples are mastered:
 All concepts and implementations in this repository are learned via the comprehensive program provided by:
 
 **CampusX**
-[Link to CampusX Course/Website]
+https://www.youtube.com/playlist?list=PLKnIA16_RmvYsvB8qkUQuJmJNuiCUJFPL
 
 ---
 
